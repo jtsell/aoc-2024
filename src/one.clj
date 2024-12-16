@@ -12,5 +12,5 @@
      (sort (map second vectors))]))
 
 (defn solve []
-  (let [input (format-input (get-input 1))]
-    (reduce + (map (fn [a b] (abs (- a b))) (first input) (second input)))))
+  (let [[left right] (format-input (get-input 1))]
+    (reduce + (map (fn [a b] (abs (- a b))) left right))))

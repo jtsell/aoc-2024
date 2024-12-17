@@ -14,6 +14,14 @@
     [(sort (map first vectors))
      (sort (map second vectors))]))
 
-(defn solve []
+(defn solve-a []
   (let [[left right] (format-input (get-input! 1))]
     (reduce + (map (fn [a b] (abs (- a b))) left right))))
+
+(defn- occurrences [coll item]
+  (count (filter #(= item %) coll)))
+
+(defn solve-b []
+  (let [[left right] (format-input (get-input! 1))]
+    (reduce + (map (fn [a] (* a (occurrences left a))) right))))
+(solve-b)

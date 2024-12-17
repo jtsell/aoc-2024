@@ -1,4 +1,13 @@
-(ns util.matrix)
+(ns util.matrix
+  (:require
+   [clojure.string :as str]))
+
+(defn string->matrix
+  "Format the string input into a matrix of characters"
+  [input]
+  (->> input
+       (str/split-lines)
+       (mapv #(str/split % #""))))
 
 (defn get-in-matrix [matrix [x y]]
   (get-in matrix [x y]))

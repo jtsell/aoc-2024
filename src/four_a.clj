@@ -1,18 +1,11 @@
-(ns four
+(ns four-a
   (:require
-   [clojure.string :as str]
    [util.input :refer [get-input!]]
    [util.matrix :refer [flatten-coordinates
                         get-in-direction
                         get-in-matrix
+                        string->matrix
                         valid-directions]]))
-
-(defn- format-input
-  "Format the string input into a matrix of characters"
-  [input]
-  (->> input
-       str/split-lines
-       (mapv #(str/split % #""))))
 
 (def next-character
   {"X" "M"
@@ -36,8 +29,8 @@
     0
     (reduce (fn [acc direction] (+ acc (check-match matrix coordinates direction (get next-character check-char)))) 0 (valid-directions matrix coordinates))))
 
-(defn solve []
-  (let [matrix (format-input (get-input! 4))]
+(defn solve-a []
+  (let [matrix (string->matrix (get-input! 4))]
     (reduce (fn [acc coordinates] (+ acc (check-initial matrix coordinates "X")))
             0
             (flatten-coordinates matrix))))

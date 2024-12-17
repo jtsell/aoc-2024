@@ -2,7 +2,10 @@
   (:require
    [clojure.string :as str]
    [util.input :refer [get-input!]]
-   [util.matrix :refer [flatten-coordinates get-in-direction get-in-matrix matrix-neighbors valid-directions]]))
+   [util.matrix :refer [flatten-coordinates
+                        get-in-direction
+                        get-in-matrix
+                        valid-directions]]))
 
 (defn- format-input
   "Format the string input into a matrix of characters"
@@ -24,9 +27,9 @@
         done? (= next-char "done")
         match? (= value-char check-char)]
     (cond
-     (not match?) 0
-     (and match? done?) 1
-     (and match? (not done?)) (check-match matrix new-coords direction next-char))))
+      (not match?) 0
+      (and match? done?) 1
+      (and match? (not done?)) (check-match matrix new-coords direction next-char))))
 
 (defn- check-initial [matrix coordinates check-char]
   (if (not= (get-in-matrix matrix coordinates) check-char)

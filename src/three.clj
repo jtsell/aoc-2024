@@ -1,6 +1,6 @@
 (ns three
  (:require
-  [input :refer [get-input]]))
+  [util.input :refer [get-input!]]))
 
 (defn- format-input [input]
   (->> input
@@ -9,4 +9,4 @@
        (map (fn [[a b]] [(Integer/parseInt a) (Integer/parseInt b)]))))
 
 (defn solve []
-  (reduce (fn [acc [a b]] (+ acc (* a b))) 0 (format-input (get-input 3))))
+  (reduce (fn [acc [a b]] (+ acc (* a b))) 0 (format-input (get-input! 3))))
